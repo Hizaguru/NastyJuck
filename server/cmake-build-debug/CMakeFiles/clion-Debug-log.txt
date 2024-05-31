@@ -1,1 +1,0 @@
-CMakeLists.txt not found in \\wsl.localhost\Ubuntu-22.04\home\jucks\coding\nastyjuck\server Select CMakeLists.txt
