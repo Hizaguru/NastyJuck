@@ -9,7 +9,7 @@
 
 int main()
 {
-    char victim_address[] = "192.168.0.1";
+    char serv_addr[] = "192.168.0.1";
     int sock, client_sock;
     char buffer[1024];
     char response[18384];
@@ -24,6 +24,16 @@ int main()
         printf("Error Setting TCP Socket Options!\n");
         return 1;
     }
+    
     server_address.sin_family = AF_INET;
-    server_address.sin_addr.s_addr = inet_addr(victim_address);
+    server_address.sin_addr.s_addr = inet_addr(serv_addr);
+    server_address.sin_port = htons(50004);
+    if(bind(sock, (struct  sockaddr *) &server_address, sizeof(server_address)) < 0) {
+        printf("Error binding socket!\n");
+        return 1;
+    }
+    
+    listen(sock, 5);
+    client_length = sizeof(client_address);
+    client_sock = accept(sock, (struct sockaddr *) &client_address, &client_length);
 }
