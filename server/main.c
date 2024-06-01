@@ -33,8 +33,8 @@ int main()
     
     // Configure server address
     server_address.sin_family = AF_INET;
-    server_address.sin_addr.s_addr = inet_addr("127.0.0.1"); // Changed to loopback address for testing
-    server_address.sin_port = htons(50004);
+    server_address.sin_addr.s_addr = inet_addr("172.17.115.154"); // Changed to loopback address for testing
+    server_address.sin_port = htons(50005);
 
     // Bind socket
     if (bind(sock, (struct sockaddr *) &server_address, sizeof(server_address)) < 0) {
