@@ -33,7 +33,7 @@ int main()
     
     // Configure server address
     server_address.sin_family = AF_INET;
-    server_address.sin_addr.s_addr = inet_addr("172.17.115.154"); // Changed to loopback address for testing
+    server_address.sin_addr.s_addr = inet_addr("192.168.175.130"); // Changed to loopback address for testing
     server_address.sin_port = htons(50005);
 
     // Bind socket

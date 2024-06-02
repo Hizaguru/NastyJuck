@@ -54,7 +54,7 @@ int APIENTRY WinMain(HINSTANCE hinstance, HINSTANCE hPrev, LPSTR lpCmdLine, int 
     char *ServIp;
     WSADATA wsaData;
 
-    ServIp = "172.17.115.154";
+    ServIp = "192.168.175.130";
     ServPort = 50005;
 
     if(WSAStartup(MAKEWORD(2,0), &wsaData) != 0) {
