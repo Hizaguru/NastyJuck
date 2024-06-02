@@ -1,2 +1,3 @@
 victim/.idea
 victim/cmake-build-debug
+victim/*.exe
