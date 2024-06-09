@@ -7,7 +7,12 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-// Main function
+/*
+ * This program creates a simple TCP server that listens for incoming connections on a specified IP address and port.
+ * Once a client connects, the server enters a loop where it accepts shell-like command input from the server's standard input,
+ * sends the command to the connected client, and prints the client's response. The loop continues until the command 'q' is entered,
+ * which terminates the connection and closes the server.
+ */
 int main()
 {
     int sock, client_socket;
