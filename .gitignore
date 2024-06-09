@@ -1,5 +1,5 @@
 victim/.idea
 victim/cmake-build-debug
 victim/*.exe
-victim/CMakeList.txt
+victim/CMakeLists.txt
 server/.vscode
